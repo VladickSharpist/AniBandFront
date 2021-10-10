@@ -48,26 +48,6 @@ function RegistrationPage(){
           register.mutate(values)
       })
 
-    // function handleSubmit( values: any ){
-
-    //     axios.post("https://localhost:5001/api/Account/Register", values )
-    //        .then((res: any) => {
-    //             if(!res.data.isSuccessful) {
-    //               var errors = res.data.errors;
-    //               errors.forEach((error: string) => {
-    //                 console.log(error)
-    //               });
-    //             }
-    //             else {
-    //                 console.log('Registration completed')
-    //             }
-    //        })
-    //        .catch(error => 
-    //        {
-    //           console.log(error)
-    //        })
-    // }
-
     return(
         <StyledForm onSubmit={registrationForm.handleSubmit}>
 

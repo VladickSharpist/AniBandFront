@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { config } from './config';
-import { ApproveUser } from './types/ApprovedUser';
+import { ApproveUser, RefreshResponse, RefreshToken } from './types/types';
 
 
 type HttpRequestResponse<T> = {
@@ -39,7 +39,28 @@ async function getUnApprovedUsers() {
     return response.data;
 }
 
+async function logout(){
+    const response = await accountService.get<
+    HttpRequestResponse<any>>(`/Logout`);
+    return response.data
+}
+
+async function login(data: { email: string, password: string}){
+    const response = await accountService.post<
+    HttpRequestResponse<RefreshToken>>(`/Login`, data);
+    return response.data
+}
+
+async function refresh(refreshToken: string ){
+    const response = await accountService.post<
+    HttpRequestResponse<RefreshResponse>>(`/Refresh`, {}, { params: { refreshToken: refreshToken }});
+    return response.data
+}
+
 export const account = {
     register,
-    getUnApprovedUsers
+    getUnApprovedUsers,
+    logout,
+    login,
+    refresh
 }

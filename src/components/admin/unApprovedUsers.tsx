@@ -4,7 +4,6 @@ import { useQuery } from "react-query";
 import styled from "styled-components";
 import { api } from "../../api/api";
 import { Table } from "../Table";
-import { UnApprovedUser } from "./unApprovedUser";
 
 function UnApprovedUsers() {
     
@@ -30,7 +29,7 @@ function UnApprovedUsers() {
 
     const { data, isError, isLoading } = useQuery(
         'unApprovedUsers', 
-        api.account.getUnApprovedUsers,)
+        api.account.getUnApprovedUsers)
 
 
     if(isLoading){
@@ -42,13 +41,10 @@ function UnApprovedUsers() {
     }
 
     return(
-        <Table columns={columns} data={data?.data} />
-        // <div>{
-        //     data?.data.map((user) => (
-        //             <UnApprovedUser key = {user.id} {...user}/>
-        //         )
-        //     )
-        // }</div>
+        <div>Unapproved users
+            <Table columns={columns} data={data?.data} />
+        </div>
+
     )
 }
 

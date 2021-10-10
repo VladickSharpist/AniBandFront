@@ -1,4 +1,4 @@
-import { ApproveUser } from "../../api/types/ApprovedUser"
+import { ApproveUser } from "../../api/types/types"
 
 function UnApprovedUser(user: ApproveUser, key: number ) {
     return(

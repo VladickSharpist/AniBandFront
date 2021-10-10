@@ -1,3 +1,5 @@
+import { history } from "./history";
+
 const routes = {
     home: '/',
     login: '/login',
@@ -12,4 +14,17 @@ const routes = {
     },
 }
 
-export { routes };
+function openRouteLogin() {
+    history.push(routes.login);
+  }
+
+function openRouteHome() {
+    history.push(routes.home);
+    window.location.reload();
+  }
+
+export { 
+    routes, 
+    openRouteLogin,
+    openRouteHome
+};

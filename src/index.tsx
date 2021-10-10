@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import LoginPage from "./pages/auth/LoginPage"
 import {
-  BrowserRouter, 
+  Router, 
   Route,
   Switch
   } from "react-router-dom"
@@ -20,6 +20,7 @@ import { PropsWithChildren } from 'react';
 import { NoAccessPage } from "./pages/auth/NoAccessPage"
 import { ToastContainer } from 'react-toastify';
 import { Layout } from './components/Layout';
+import { history } from './history';
 
 function Application() {
   return (
@@ -38,16 +39,16 @@ function Application() {
 function ApplicationWrapper(props: PropsWithChildren<unknown>) {
 
   return (
-    <CookiesProvider>
-      <BrowserRouter>
+    <Router history = {history}>
+      <CookiesProvider>
         <QueryClientProvider client={queryClient}>
             <Layout>
               <ToastContainer/>
               {props.children}
             </Layout>
         </QueryClientProvider>
-      </BrowserRouter>
-    </CookiesProvider>
+      </CookiesProvider>
+    </Router>
   );
 }
 

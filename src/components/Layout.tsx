@@ -1,14 +1,20 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect } from "react";
 import styled from "styled-components";
 import { useAuthState } from "../hooks/useAuthState"
+import LogButton from "./LogButton";
 
 function Layout(props: PropsWithChildren<unknown>){
 
     const user = useAuthState();
     
+    useEffect(()=>{
+
+    },[user.isAuthenficated])
+
     return (
     <LayoutWrapper>
-        {user.isAuthenficated ? 'Authorized Layout': 'Layout'}
+        Layout 
+        <LogButton/>
         {props.children}
     </LayoutWrapper>)
 }
